@@ -18,7 +18,7 @@
           class="navbar-item is-justify-content-flex-start is-expanded is-clipped is-size-7"
         >
           <div class="is-text-clipped">
-            <strong v-text="queueStore.current.title" />
+            <strong v-text="currentTrack.title" />
             <br />
             <span v-text="metadata" />
           </div>
@@ -76,6 +76,7 @@ import ControlPlayerPrevious from '@/components/ControlPlayerPrevious.vue'
 import ControlPlayerRepeat from '@/components/ControlPlayerRepeat.vue'
 import ControlPlayerShuffle from '@/components/ControlPlayerShuffle.vue'
 import ControlStreamVolume from '@/components/ControlStreamVolume.vue'
+import { withFriendlyPipeName } from '@/lib/PipeNames'
 import { useOutputsStore } from '@/stores/outputs'
 import { useQueueStore } from '@/stores/queue'
 import { useUIStore } from '@/stores/ui'
@@ -105,11 +106,14 @@ export default {
     }
   },
   computed: {
+    currentTrack() {
+      return withFriendlyPipeName(this.queueStore.current)
+    },
     isPlayerPage() {
       return this.$route.name === 'player'
     },
     metadata() {
-      const { current } = this.queueStore
+      const current = this.currentTrack
       return [current.artist, current.album].filter(Boolean).join(' - ')
     }
   }

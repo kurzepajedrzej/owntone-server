@@ -128,6 +128,12 @@ export default {
           name: this.searchStore.source,
           show: this.settingsStore.showMenuItemSearch
         },
+        {
+          icon: 'swap-horizontal',
+          key: 'navigation.source',
+          name: 'source',
+          show: true
+        },
         { separator: true },
         { key: 'navigation.settings', name: 'settings-webinterface' },
         { key: 'navigation.outputs', name: 'outputs' },

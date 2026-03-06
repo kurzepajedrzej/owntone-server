@@ -28,6 +28,7 @@ import PageMusicSpotifyFollowedArtists from '@/pages/PageMusicSpotifyFollowedArt
 import PageMusicSpotifyNewReleases from '@/pages/PageMusicSpotifyNewReleases.vue'
 import PageOutputs from '@/pages/PageOutputs.vue'
 import PagePlayer from '@/pages/PagePlayer.vue'
+import PageSource from '@/pages/PageSource.vue'
 import PagePlaylistFolder from '@/pages/PagePlaylistFolder.vue'
 import PagePlaylistTracks from '@/pages/PagePlaylistTracks.vue'
 import PagePlaylistTracksSpotify from '@/pages/PagePlaylistTracksSpotify.vue'
@@ -47,7 +48,8 @@ const TOP_WITH_TABS = 100
 export const router = createRouter({
   history: createWebHashHistory(),
   routes: [
-    { path: '/:all(.*)*', redirect: '/' },
+    { path: '/:all(.*)*', redirect: '/source' },
+    { path: '/', redirect: '/source' },
     { component: PageAbout, name: 'about', path: '/about' },
     { component: PageAlbum, name: 'music-album', path: '/music/albums/:id' },
     {
@@ -114,6 +116,11 @@ export const router = createRouter({
       component: PageOutputs,
       name: 'outputs',
       path: '/outputs'
+    },
+    {
+      component: PageSource,
+      name: 'source',
+      path: '/source'
     },
     {
       name: 'music',
@@ -217,7 +224,7 @@ export const router = createRouter({
     {
       component: PageQueue,
       name: 'queue',
-      path: '/'
+      path: '/queue'
     },
     {
       component: PageSearchLibrary,

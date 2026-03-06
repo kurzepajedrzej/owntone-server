@@ -58,6 +58,7 @@ import ControlSlider from '@/components/ControlSlider.vue'
 import ModalDialogQueueItem from '@/components/ModalDialogQueueItem.vue'
 import PaneLyrics from '@/components/PaneLyrics.vue'
 import player from '@/api/player'
+import { withFriendlyPipeName } from '@/lib/PipeNames'
 import { usePlayerStore } from '@/stores/player'
 import { useQueueStore } from '@/stores/queue'
 import { useSettingsStore } from '@/stores/settings'
@@ -112,7 +113,7 @@ export default {
       return this.track.length_ms === 0
     },
     track() {
-      return this.queueStore.current
+      return withFriendlyPipeName(this.queueStore.current)
     },
     trackElapsedTime() {
       return this.$formatters.toTimecode(this.trackProgress * INTERVAL)
